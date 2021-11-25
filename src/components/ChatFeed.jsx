@@ -17,8 +17,8 @@ const ChatFeed = (props) => {
                     <div className="message-block">
                         {
                             isMyMessage
-                                ? <MyMessage />
-                                : <TheirMessage />
+                                ? <MyMessage message={message}/>
+                                : <TheirMessage message={message} lastMessage={messages[lastMessageKey]}/>
                         }
                     </div>
                     <div className="read-receipts" style={{ marginRight: isMyMessage ? '18px' : '0px', marginLeft: isMyMessage ? '0px' : '68px' }}>
@@ -30,9 +30,26 @@ const ChatFeed = (props) => {
     }
 
     renderMessages();
+
+    if(!chat) return 'Loading...';
+
     return (
-        <div>
-            ChatFeed
+        <div className="chat-feed">
+            <div className='chat-title-container'>
+                <div className="chat-title">
+                    {/* ? checks to make sure you have the chat before the title is rendered */}
+                    {chat?.title}
+                </div>
+                <div className="chat-subtitle">
+                    {chat.people.map((person) => ` ${person.person.username}`)}
+                </div>
+            </div>
+            {renderMessages()}
+            <div style={{height: '100px'}} />
+            <div className="message-form-container">
+                {/* Pass in all the props with spread */}
+                <MessageForm {...props} chatId={activeChat} />
+            </div>
         </div>
     );
 }
