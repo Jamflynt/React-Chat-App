@@ -4,6 +4,7 @@ import axios from 'axios';
 const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -20,7 +21,7 @@ const LoginForm = () => {
 
         } catch(error){
             // error -> try with new usename...
-
+            setError('Woops, looks like you entered something wrong. Please try again.')
         }
 
 
@@ -38,6 +39,7 @@ const LoginForm = () => {
                             <span>Start Chatting</span>
                         </button>
                     </div>
+                    <h2 className="error">{error}</h2>
                 </form>
             </div>
 
