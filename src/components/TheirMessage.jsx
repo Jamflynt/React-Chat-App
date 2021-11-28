@@ -22,11 +22,9 @@ const TheirMessage = ({ lastMessage, message }) => {
                         {message.text}
                     </div>
                 )
-
             }
         </div>
     );
-
 }
 
 export default TheirMessage;

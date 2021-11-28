@@ -11,15 +11,12 @@ const MessageForm = (props) => {
         event.preventDefault();
 
         const text = value.trim();
-
         if (text.length > 0) sendMessage(creds, chatId, {text})
-
         setValue('');
     }
 
     const handleChange = (event) => {
         setValue(event.target.value);
-
         isTyping(props, chatId);
     }
 
@@ -52,10 +49,8 @@ const MessageForm = (props) => {
             <button type="submit" className="send-button">
                 <SendOutlined className="send-icon"/>
             </button>
-
         </form>
     )
-
 }
 
 export default MessageForm;

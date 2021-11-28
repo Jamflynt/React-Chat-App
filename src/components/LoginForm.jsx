@@ -16,15 +16,11 @@ const LoginForm = () => {
             // works out -> logged in 
             localStorage.setItem('username', username);
             localStorage.setItem('password', password);
-
             window.location.reload();
-
         } catch(error){
             // error -> try with new usename...
             setError('Woops, looks like you entered something wrong. Please try again.')
         }
-
-
     }
 
     return(
@@ -42,7 +38,6 @@ const LoginForm = () => {
                     <h2 className="error">{error}</h2>
                 </form>
             </div>
-
         </div>
     )
 }
